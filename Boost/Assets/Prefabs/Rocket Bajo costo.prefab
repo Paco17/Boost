@@ -442,6 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rcsThrust: 80
   mainThrust: 1000
+  levelDelay: 3
   mainEngine: {fileID: 8300000, guid: 4c24b102ad6440a4fb011c6c6f36246f, type: 3}
   dead: {fileID: 8300000, guid: 5614e682f4b704a4bbc32bcb1b9898b0, type: 3}
   win: {fileID: 8300000, guid: 141a339909081df4f85f3ef000a3ddf7, type: 3}

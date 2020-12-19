@@ -5,6 +5,7 @@ using System;
 public class Rocket : MonoBehaviour {
     [SerializeField] float rcsThrust = 80f;
     [SerializeField] float mainThrust = 80f;
+    [SerializeField] float levelDelay = 3f;
     
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip dead;
@@ -63,7 +64,7 @@ public class Rocket : MonoBehaviour {
         state = State.Trascending;
         playAudio(win);
         winParticles.Play();
-        Invoke("NextLevel", 3f);
+        Invoke("NextLevel", levelDelay);
     }
 
     private void Dying()
@@ -71,7 +72,7 @@ public class Rocket : MonoBehaviour {
         state = State.Dying;
         playAudio(dead);
         deathParticles.Play();
-        Invoke("RepeatLevel", 3f);
+        Invoke("RepeatLevel", levelDelay);
     }
 
     private void playAudio(AudioClip clip){ audio.PlayOneShot(clip); }
