@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 1433059449747033205, guid: 037e5d13c5365214facc6b7b6ba39a63,
         type: 3}
       propertyPath: m_Name
-      value: Goal
+      value: Goal Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1433059449747033205, guid: 037e5d13c5365214facc6b7b6ba39a63,
         type: 3}
       propertyPath: m_TagString
-      value: Friendly
+      value: Finish
       objectReference: {fileID: 0}
     - target: {fileID: 7004295971508918893, guid: 037e5d13c5365214facc6b7b6ba39a63,
         type: 3}

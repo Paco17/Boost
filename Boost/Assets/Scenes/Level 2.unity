@@ -1296,6 +1296,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 951741836811983755, guid: de0d8df5b64582b40bfd451c0e93879b,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628066711495835676, guid: de0d8df5b64582b40bfd451c0e93879b,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3512162739491865465, guid: de0d8df5b64582b40bfd451c0e93879b,
         type: 3}
       propertyPath: m_LocalPosition.y
