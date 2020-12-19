@@ -79,7 +79,7 @@ public class Rocket : MonoBehaviour {
 
     private void RepeatLevel()
     {
-        indexScene = 0;
+        if (indexScene > 0) { indexScene--; }
         SceneManager.LoadScene(indexScene);
     }
 
@@ -106,7 +106,7 @@ public class Rocket : MonoBehaviour {
 
     private void ApplyThrust()
     {
-        rigidbody.AddRelativeForce(Vector3.up * mainThrust);
+        rigidbody.AddRelativeForce(Vector3.up * mainThrust* Time.deltaTime);
         if (!audio.isPlaying)
         {
             playAudio(mainEngine);
