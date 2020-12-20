@@ -18,16 +18,18 @@ public class Rocket : MonoBehaviour {
 
     Rigidbody rigidbody;
     AudioSource audio;
-    static int indexScene = 0;
+    static int indexScene;
+    
 
     enum State {Alive , Dying, Trascending};
     State state = State.Alive;
+    bool flag = false;
 
     // Start is called before the first frame update
     void Start() {
         rigidbody = GetComponent<Rigidbody>();
         audio = GetComponent<AudioSource>();
-
+        indexScene = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
@@ -38,11 +40,29 @@ public class Rocket : MonoBehaviour {
             RespondToThrustInput();
             RespondToRotateInput();
         }
+
+        if (Debug.isDebugBuild){
+            Shortcuts();
+        }
+
+    }
+
+    private void Shortcuts()
+    {
+        if (Input.GetKey(KeyCode.F))
+        {
+            Invoke("NextLevel", 0F);
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            flag = !flag;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive) { return; }
+        if (state != State.Alive || flag) { return; }
         audio.Stop();
         switch (collision.gameObject.tag)
         {
@@ -87,8 +107,16 @@ public class Rocket : MonoBehaviour {
     private void NextLevel()
     {
         // todo allow for more than 2 levels 
-        indexScene++;
-        SceneManager.LoadScene(indexScene); 
+        if (indexScene == SceneManager.sceneCountInBuildSettings - 1)
+        {
+            indexScene=0;
+            SceneManager.LoadScene(indexScene);
+        }
+        else
+        {
+            indexScene++;
+            SceneManager.LoadScene(indexScene);
+        }
     }
 
     private void RespondToThrustInput()
@@ -118,7 +146,7 @@ public class Rocket : MonoBehaviour {
 
     private void RespondToRotateInput()
     {
-        rigidbody.freezeRotation = true;//Take manual control of rotation
+        rigidbody.angularVelocity = Vector3.zero;
 
       
         float rotationThisFrame = rcsThrust * Time.deltaTime;
