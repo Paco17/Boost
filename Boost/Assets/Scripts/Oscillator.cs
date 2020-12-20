@@ -5,13 +5,13 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Oscillator : MonoBehaviour {
 
-    [SerializeField] Vector3 vector = new Vector3(0f, -10f, 0f);
+    [SerializeField] Vector3 vector = new Vector3(0f, 0f, 0f);
     [SerializeField] float period = 2f;
 
     //todo Remove from inspector
 
     // 0 for not moved, 1 fully moved
-    [Range(0,1)] [SerializeField] float movementFactor;
+    float movementFactor;
 
     Vector3 startPos;
     // Start is called before the first frame update
